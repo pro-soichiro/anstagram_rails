@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  first_name_kana: MyString
+  last_name_kana: MyString
+  email: MyString
+  joined_on: 2023-02-14
+  born_on: 2023-02-14
+  nickname: MyString
+  special_skill: MyString
+  pastime: MyString
+  motto: MyString
+  motto_description: MyText
+  career: MyText
+  self_introduction: MyText
+
+two:
+  first_name: MyString
+  last_name: MyString
+  first_name_kana: MyString
+  last_name_kana: MyString
+  email: MyString
+  joined_on: 2023-02-14
+  born_on: 2023-02-14
+  nickname: MyString
+  special_skill: MyString
+  pastime: MyString
+  motto: MyString
+  motto_description: MyText
+  career: MyText
+  self_introduction: MyText
