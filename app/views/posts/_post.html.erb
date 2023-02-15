@@ -1,16 +1,18 @@
 <% unless post.archived? %>
-  <p>
-    <strong>Caption:</strong>
-    <%= post.caption %>
-  </p>
-  <p>
-    <strong>Status:</strong>
-    <%= post.status %>
-  </p>
-  <p>
-    <%= link_to "Destroy Post", [post.user, post], data: {
-        turbo_method: :delete,
-        turbo_confirm: "Are you sure?"
-    } %>
-  </p>
+  <div>
+    <p>
+      <strong>キャプション:</strong>
+      <%= post.caption %>
+    </p>
+    <p>
+      <strong>公開設定:</strong>
+      <%= post.status %>
+    </p>
+    <p>
+      <%= link_to "投稿の削除", [post.user, post], data: {
+          turbo_method: :delete,
+          turbo_confirm: "本当に削除してよろしいですか？"
+      } %>
+    </p>
+  </div>
 <% end %>

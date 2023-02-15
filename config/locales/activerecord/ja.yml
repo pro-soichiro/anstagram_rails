@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      post: 投稿
+    attributes:
+      user:
+        last_name: 苗字
+        first_name: 名前
+      post:
+        caption: キャプション
+        status: 設定

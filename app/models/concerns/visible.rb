@@ -1,7 +1,7 @@
 module Visible
   extend ActiveSupport::Concern
 
-  VALID_STATUSES = ['public', 'private', 'archived']
+  VALID_STATUSES = ['公開', '非公開', 'アーカイブ']
 
   included do
     validates :status, inclusion: { in: VALID_STATUSES }
@@ -9,11 +9,15 @@ module Visible
 
   class_methods do
     def public_count
-      where(status: 'public').count
+      where(status: '公開').count
     end
   end
 
+  def public_count
+    where(status: '公開').count
+  end
+
   def archived?
-    status == 'archived'
+    status == 'アーカイブ'
   end
 end
