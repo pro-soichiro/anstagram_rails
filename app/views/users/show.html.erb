@@ -16,3 +16,11 @@
     } %>
   </li>
 </ul>
+
+<h2>Posts</h2>
+<p><%= Post.public_count %> 件の公開中の投稿があります。</p>
+
+<%= render @user.posts %>
+
+<h2>New Posts</h2>
+<%= render 'posts/form' %>

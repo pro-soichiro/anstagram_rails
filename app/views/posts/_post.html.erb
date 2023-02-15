@@ -1,0 +1,16 @@
+<% unless post.archived? %>
+  <p>
+    <strong>Caption:</strong>
+    <%= post.caption %>
+  </p>
+  <p>
+    <strong>Status:</strong>
+    <%= post.status %>
+  </p>
+  <p>
+    <%= link_to "Destroy Post", [post.user, post], data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+    } %>
+  </p>
+<% end %>
