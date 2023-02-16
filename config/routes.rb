@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     resources :posts
   end
   resources :posts, only: :index
+  resources :departments
 end

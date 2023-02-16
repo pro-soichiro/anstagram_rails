@@ -1,0 +1,19 @@
+<%= form_with model: department do |form| %>
+  <div>
+    <%= form.label :name %><span style="color: red">*</span>
+    <%= form.text_field :name %>
+    <% department.errors.full_messages_for(:name).each do |message| %>
+      <div style="color: red"><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :description %><span style="color: red">*</span>
+    <%= form.text_area :description %>
+    <% department.errors.full_messages_for(:description).each do |message| %>
+      <div style="color: red"><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

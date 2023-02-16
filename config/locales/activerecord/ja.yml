@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザー
       post: 投稿
+      department: 部署
     attributes:
       user:
         last_name: 苗字
@@ -22,3 +23,6 @@ ja:
       post:
         caption: キャプション
         status: 設定
+      department:
+        name: 部署名
+        description: 説明

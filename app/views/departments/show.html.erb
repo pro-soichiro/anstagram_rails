@@ -1,0 +1,17 @@
+<h1>部署 詳細</h1>
+
+<%= link_to "編集", edit_department_path %>
+<%= link_to "削除", department_path(@department), data: {
+                turbo_method: :delete,
+                turbo_confirm: "本当に削除してよろしいですか？"
+} %>
+<div style="border: 1px solid black">
+  <p>
+    <strong>部署名:</strong>
+    <%= @department.name %>
+  </p>
+  <dl>
+    <dt>説明:</dt>
+    <dd><%= @department.description %></dd>
+  </dl>
+</div>
