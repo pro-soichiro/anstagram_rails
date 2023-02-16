@@ -11,7 +11,12 @@ module Visible
     def public_count
       where(status: '公開').count
     end
+
+    def public
+      where(status: '公開')
+    end
   end
+
 
   def public_count
     where(status: '公開').count

@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
 
+  def index
+    @posts = Post.eager_load(:user).public.order(created_at: :desc)
+  end
+
   def create
     @user = User.find(params[:user_id])
     @post = @user.posts.create(post_params)
