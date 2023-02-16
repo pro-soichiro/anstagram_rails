@@ -7,6 +7,47 @@
   <dt>名前</dt>
   <dd><%= @user.first_name %></dd>
 </dl>
+<dl>
+  <dt>みょうじ</dt>
+  <dd><%= @user.last_name_kana %></dd>
+</dl>
+<dl>
+  <dt>なまえ</dt>
+  <dd><%= @user.first_name_kana %></dd>
+</dl>
+<dl>
+  <dt>メールアドレス</dt>
+  <dd><%= @user.email %></dd>
+</dl>
+<dl>
+  <dt>入社日</dt>
+  <dd><%= @user.joined_on ? l(@user.joined_on) : "未登録"  %></dd>
+</dl>
+<dl>
+  <dt>生年月日</dt>
+  <dd><%= @user.born_on ? l(@user.born_on) : "未登録" %></dd>
+</dl>
+<dl>
+  <dt>ニックネーム</dt>
+  <dd><%= @user.nickname %></dd>
+</dl>
+<dl>
+  <dt>特技</dt>
+  <dd><%= @user.special_skill %></dd>
+</dl>
+<dl>
+  <dt>趣味</dt>
+  <dd><%= @user.pastime %></dd>
+</dl>
+<dl>
+  <dt>座右の銘</dt>
+  <dd><%= @user.motto %></dd>
+  <dd><%= @user.motto_description %></dd>
+</dl>
+<dl>
+  <dt>自己紹介</dt>
+  <dd><%= @user.self_introduction %></dd>
+</dl>
 
 <ul>
   <li>

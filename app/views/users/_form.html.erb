@@ -1,17 +1,71 @@
 <%= form_with model: user do |form| %>
   <div>
-    <%= form.label :last_name %>
+    <%= form.label :last_name %><span style="color: red">*</span>
     <%= form.text_field :last_name %>
     <% user.errors.full_messages_for(:last_name).each do |message| %>
       <div style="color: red"><%= message %></div>
     <% end %>
   </div>
   <div>
-    <%= form.label :first_name %>
+    <%= form.label :first_name %><span style="color: red">*</span>
     <%= form.text_field :first_name %>
     <% user.errors.full_messages_for(:first_name).each do |message| %>
       <div style="color: red"><%= message %></div>
     <% end %>
+  </div>
+  <div>
+    <%= form.label :last_name_kana %><span style="color: red">*</span>
+    <%= form.text_field :last_name_kana %>
+    <% user.errors.full_messages_for(:last_name_kana).each do |message| %>
+      <div style="color: red"><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :first_name_kana %><span style="color: red">*</span>
+    <%= form.text_field :first_name_kana %>
+    <% user.errors.full_messages_for(:first_name_kana).each do |message| %>
+      <div style="color: red"><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :email %><span style="color: red">*</span>
+    <%= form.email_field :email %>
+    <% user.errors.full_messages_for(:email).each do |message| %>
+      <div style="color: red"><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :joined_on %>
+    <%= form.date_field :joined_on %>
+  </div>
+  <div>
+    <%= form.label :born_on %>
+    <%= form.date_field :born_on %>
+  </div>
+  <div>
+    <%= form.label :nickname %>
+    <%= form.text_field :nickname %>
+  </div>
+  <div>
+    <%= form.label :special_skill %>
+    <%= form.text_field :special_skill %>
+  </div>
+  <div>
+    <%= form.label :pastime %>
+    <%= form.text_field :pastime %>
+  </div>
+  <div>
+    <%= form.label :motto %>
+    <%= form.text_field :motto %>
+    <%= form.text_area :motto_description %>
+  </div>
+  <div>
+    <%= form.label :career %>
+    <%= form.text_area :career %>
+  </div>
+  <div>
+    <%= form.label :self_introduction %>
+    <%= form.text_area :self_introduction %>
   </div>
 
   <div>
