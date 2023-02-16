@@ -6,8 +6,12 @@ class PostsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @post = @user.posts.create(post_params)
-    redirect_to user_path(@user)
+    @post = @user.posts.build(post_params)
+    if @post.save
+      redirect_to user_path(@user)
+    else
+      render "users/show", status: :unprocessable_entity
+    end
   end
 
   def destroy
