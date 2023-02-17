@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   resources :posts, only: :index
   resources :departments
+  resources :prefectures, only: :index
 
   resources :users_departments, only: %w[edit update destroy]
 

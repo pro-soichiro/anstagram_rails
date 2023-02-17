@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+
+Prefecture.destroy_all
+JSON.load(File.new("#{Rails.root}/db/seed_jsons/prefectures.json")).each do |p|
+  Prefecture.create p
+end

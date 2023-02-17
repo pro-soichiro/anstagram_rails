@@ -4,6 +4,7 @@ ja:
       user: ユーザー
       post: 投稿
       department: 部署
+      prefecture: 都道府県
     attributes:
       user:
         last_name: 苗字
@@ -26,3 +27,5 @@ ja:
       department:
         name: 部署名
         description: 説明
+      prefecture:
+        name: 都道府県名
