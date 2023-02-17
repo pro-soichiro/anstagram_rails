@@ -8,7 +8,7 @@
   </p>
   <p>
     <%= form.label :status %><br>
-    <%= form.select :status, ['公開', '非公開', 'アーカイブ'], selected: '公開' %>
+    <%= form.select :status, Visible::VALID_STATUSES, selected: '公開' %>
   </p>
   <p>
     <%= form.submit %>
