@@ -5,6 +5,7 @@
                 turbo_method: :delete,
                 turbo_confirm: "本当に削除してよろしいですか？"
 } %>
+<%= link_to "メンバーの追加", edit_users_department_path(department_id: @department) %>
 <div style="border: 1px solid black">
   <p>
     <strong>部署名:</strong>
@@ -15,3 +16,19 @@
     <dd><%= @department.description %></dd>
   </dl>
 </div>
+
+<h2>所属者</h2><span><%= @department.users.size %>名</span>
+<ul>
+  <% @department.users.each do |user| %>
+    <li>
+      <%= link_to user do %>
+        <small><%= user.full_name_kana %></small>
+        <p><%= user.full_name %></p>
+      <% end %>
+    </li>
+    <%= link_to "削除",
+          users_department_path(department_id: @department, user_id: user),
+            data: { turbo_method: :delete,
+                    turbo_confirm: "本当に削除してよろしいですか？"} %>
+  <% end %>
+</ul>

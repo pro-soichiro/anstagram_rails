@@ -1,23 +1,26 @@
 <h1><%= @user.full_name %>のページ</h1>
 <dl>
-  <dt>苗字</dt>
-  <dd><%= @user.last_name %></dd>
-</dl>
-<dl>
-  <dt>名前</dt>
-  <dd><%= @user.first_name %></dd>
-</dl>
-<dl>
-  <dt>みょうじ</dt>
-  <dd><%= @user.last_name_kana %></dd>
-</dl>
-<dl>
-  <dt>なまえ</dt>
-  <dd><%= @user.first_name_kana %></dd>
+  <dt>氏名</dt>
+  <dd><%= @user.full_name_kana %></dd>
+  <dd><%= @user.full_name %></dd>
 </dl>
 <dl>
   <dt>メールアドレス</dt>
   <dd><%= @user.email %></dd>
+</dl>
+<dl>
+  <dt>所属部署</dt>
+  <dd>
+    <ul>
+      <% @user.departments.each do |department| %>
+        <li>
+          <%= link_to department do %>
+            <%= department.name %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </dd>
 </dl>
 <dl>
   <dt>入社日</dt>
