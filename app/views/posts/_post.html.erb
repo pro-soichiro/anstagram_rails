@@ -4,10 +4,6 @@
     <%= post.caption %>
   </p>
   <p>
-    <strong>公開設定:</strong>
-    <%= post.status %>
-  </p>
-  <p>
     <%= link_to "投稿の削除", [post.user, post], data: {
         turbo_method: :delete,
         turbo_confirm: "本当に削除してよろしいですか？"

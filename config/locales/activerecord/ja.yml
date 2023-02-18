@@ -23,7 +23,6 @@ ja:
         self_introduction: 自己紹介
       post:
         caption: キャプション
-        status: 設定
       department:
         name: 部署名
         description: 説明

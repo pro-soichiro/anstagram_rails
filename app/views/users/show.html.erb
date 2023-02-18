@@ -68,15 +68,8 @@
 </ul>
 
 <h2>投稿</h2>
-<div style="border: 2px solid green">
-  <p><%= @user.posts.public.size %> 件の公開中の投稿があります。</p>
-  <%= render @user.posts.public %>
-</div>
-
-<div style="border: 2px solid yellow">
-  <p><%= @user.posts.private.size %> 件の非公開中の投稿があります。</p>
-  <%= render @user.posts.private %>
-</div>
+<p><%= @user.posts.size %> 件の投稿があります。</p>
+<%= render @user.posts %>
 
 <h2>新規投稿</h2>
 <%= render 'posts/form' %>

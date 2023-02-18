@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.eager_load(:user).public.order(created_at: :desc)
+    @posts = Post.eager_load(:user).order(created_at: :desc)
   end
 
   def create
@@ -23,6 +23,6 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:caption, :status)
+      params.require(:post).permit(:caption)
     end
 end
