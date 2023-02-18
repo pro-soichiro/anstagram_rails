@@ -69,7 +69,7 @@
 
 <h2>投稿</h2>
 <p><%= @user.posts.size %> 件の投稿があります。</p>
-<%= render @user.posts %>
+<%= render @user.posts.order(created_at: :desc) %>
 
 <h2>新規投稿</h2>
 <%= render 'posts/form' %>
