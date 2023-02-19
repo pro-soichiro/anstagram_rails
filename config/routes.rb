@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'users_departments/new'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
   root "users#index"
 
   resources :users do
@@ -10,7 +7,7 @@ Rails.application.routes.draw do
   resources :posts, only: :index
   resources :departments
   resources :prefectures, only: :index
+  resources :birthplaces, only: %i(index show)
 
   resources :users_departments, only: %i(edit update destroy)
-
 end

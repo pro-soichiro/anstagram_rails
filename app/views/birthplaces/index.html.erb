@@ -1,0 +1,11 @@
+<h1>出身地 一覧</h1>
+
+<ul>
+  <% @birthplaces.each do |birthplace| %>
+    <li>
+      <%= link_to birthplace_path(birthplace.id) do %>
+        <%= birthplace.name %> <%= birthplace.user_size %>名
+      <% end %>
+    </li>
+  <% end %>
+</ul>
