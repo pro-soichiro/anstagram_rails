@@ -1,36 +1,36 @@
-<%= form_with model: user do |form| %>
+<%= form_with model: form_user, url: url do |form| %>
   <div>
     <%= form.label :last_name %><span style="color: red">*</span>
     <%= form.text_field :last_name %>
-    <% user.errors.full_messages_for(:last_name).each do |message| %>
+    <% form_user.errors.full_messages_for(:last_name).each do |message| %>
       <div style="color: red"><%= message %></div>
     <% end %>
   </div>
   <div>
     <%= form.label :first_name %><span style="color: red">*</span>
     <%= form.text_field :first_name %>
-    <% user.errors.full_messages_for(:first_name).each do |message| %>
+    <% form_user.errors.full_messages_for(:first_name).each do |message| %>
       <div style="color: red"><%= message %></div>
     <% end %>
   </div>
   <div>
     <%= form.label :last_name_kana %><span style="color: red">*</span>
     <%= form.text_field :last_name_kana %>
-    <% user.errors.full_messages_for(:last_name_kana).each do |message| %>
+    <% form_user.errors.full_messages_for(:last_name_kana).each do |message| %>
       <div style="color: red"><%= message %></div>
     <% end %>
   </div>
   <div>
     <%= form.label :first_name_kana %><span style="color: red">*</span>
     <%= form.text_field :first_name_kana %>
-    <% user.errors.full_messages_for(:first_name_kana).each do |message| %>
+    <% form_user.errors.full_messages_for(:first_name_kana).each do |message| %>
       <div style="color: red"><%= message %></div>
     <% end %>
   </div>
   <div>
     <%= form.label :email %><span style="color: red">*</span>
     <%= form.email_field :email %>
-    <% user.errors.full_messages_for(:email).each do |message| %>
+    <% form_user.errors.full_messages_for(:email).each do |message| %>
       <div style="color: red"><%= message %></div>
     <% end %>
   </div>
@@ -41,6 +41,22 @@
   <div>
     <%= form.label :born_on %>
     <%= form.date_field :born_on %>
+  </div>
+  <div>
+    <%= form.label :prefecture_id %>
+    <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name,
+                                                   { include_blank: '未選択'} %>
+    <% form_user.errors.full_messages_for(:prefecture_id).each do |message| %>
+      <div style="color: red"><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :birthplace_detail %>
+    <%= form.text_area :birthplace_detail %>
+  </div>
+  <div>
+    <%= form.label :departments %>
+    <%= form.collection_check_boxes :departments, Department.all, :id, :name %>
   </div>
   <div>
     <%= form.label :nickname %>

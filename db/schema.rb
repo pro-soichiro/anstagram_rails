@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_17_235844) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_18_081158) do
   create_table "departments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -55,7 +55,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_235844) do
     t.text "self_introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "prefecture_id"
+    t.text "birthplace_detail"
+    t.index ["prefecture_id"], name: "index_users_on_prefecture_id"
   end
 
-  add_foreign_key "posts", "users"
 end

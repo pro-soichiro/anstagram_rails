@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   resources :departments
   resources :prefectures, only: :index
 
-  resources :users_departments, only: %w[edit update destroy]
+  resources :users_departments, only: %i(edit update destroy)
 
 end

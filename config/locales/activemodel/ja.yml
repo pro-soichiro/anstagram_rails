@@ -1,0 +1,23 @@
+ja:
+  activemodel:
+    models:
+      'form/user': ユーザー
+    attributes:
+      'form/user':
+        last_name: 苗字
+        first_name: 名前
+        last_name_kana: みょうじ
+        first_name_kana: なまえ
+        email: メールアドレス
+        joined_on: 入社日
+        born_on: 生年月日
+        nickname: ニックネーム
+        special_skill: 特技
+        pastime: 趣味
+        motto: 座右の銘
+        motto_description: 説明
+        career: 経歴
+        self_introduction: 自己紹介
+        prefecture_id: 都道府県
+        birthplace_detail: 出身地の詳細
+        departments: 部署

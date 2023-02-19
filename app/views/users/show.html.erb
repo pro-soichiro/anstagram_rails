@@ -31,6 +31,10 @@
   <dd><%= @user.born_on ? l(@user.born_on) : "未登録" %></dd>
 </dl>
 <dl>
+  <dt>出身地</dt>
+  <dd><%= @user.prefecture&.name %> <%= @user.birthplace_detail %></dd>
+</dl>
+<dl>
   <dt>ニックネーム</dt>
   <dd><%= @user.nickname %></dd>
 </dl>
@@ -68,7 +72,7 @@
 </ul>
 
 <h2>投稿</h2>
-<p><%= @user.posts.size %> 件の投稿があります。</p>
+<p><%= @posts_size %> 件の投稿があります。</p>
 <%= render @user.posts.order(created_at: :desc) %>
 
 <h2>新規投稿</h2>

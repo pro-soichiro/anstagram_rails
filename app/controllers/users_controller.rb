@@ -5,32 +5,33 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts_size = @user.posts.size
     @post = @user.posts.build
   end
 
   def new
-    @user = User.new
+    @form_user = Form::User.new
   end
 
   def create
-    @user = User.new(user_params)
+    @form_user = Form::User.new(form_user_params)
 
-    if @user.save
-      redirect_to @user
+    if @form_user.save
+      redirect_to user_path(@form_user)
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
-    @user = User.find(params[:id])
+    @form_user = Form::User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
+    @form_user = Form::User.find(params[:id])
 
-    if @user.update(user_params)
-      redirect_to @user
+    if @form_user.update(form_user_params)
+      redirect_to user_path(@form_user)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,22 +45,24 @@ class UsersController < ApplicationController
   end
 
   private
-    def user_params
+    def form_user_params
       params
-        .require(:user)
-        .permit(:last_name,
-                :first_name,
-                :last_name_kana,
-                :first_name_kana,
-                :email,
-                :joined_on,
-                :born_on,
-                :nickname,
-                :special_skill,
-                :pastime,
-                :motto,
-                :motto_description,
-                :career,
-                :self_introduction)
+        .require(:form_user)
+        .permit(Form::User::USER_ATTR,
+          departments: []
+        )
     end
+
+    # TODO: birthplaceは複数持てないようにしたが、配列としてパラメータに渡せるので、
+    #       permit(:last_name, birthplaces: [ :prefecture, :detail ] )
+    #       として、受け取れる
+    #       Parameters: {
+    #                     :form_user => {
+    #                       "last_name"=>"something",
+    #                       "birthplaces"=> [
+    #                         "prefecture"=>"1",
+    #                         "detail"=>"something"
+    #                       ]
+    #                     }
+    #                   }
 end
