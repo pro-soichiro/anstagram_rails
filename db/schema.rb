@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_18_081158) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_19_090754) do
   create_table "departments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_18_081158) do
     t.string "last_name"
     t.string "first_name_kana"
     t.string "last_name_kana"
-    t.string "email"
+    t.string "email", null: false
     t.date "joined_on"
     t.date "born_on"
     t.string "nickname"
@@ -57,6 +57,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_18_081158) do
     t.datetime "updated_at", null: false
     t.bigint "prefecture_id"
     t.text "birthplace_detail"
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.index ["prefecture_id"], name: "index_users_on_prefecture_id"
   end
 
