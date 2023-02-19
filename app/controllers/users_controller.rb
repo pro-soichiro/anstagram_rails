@@ -14,24 +14,24 @@ class UsersController < ApplicationController
   end
 
   def create
-    @form_user = Form::User.new(form_user_params)
+    @form_user = Form::User.new(user_params)
 
     if @form_user.save
-      redirect_to user_path(@form_user)
+      redirect_to @form_user
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
-    @form_user = Form::User.find(params[:id])
+    @form_user = Form::User.new(user: User.find(params[:id]))
   end
 
   def update
-    @form_user = Form::User.find(params[:id])
+    @form_user = Form::User.new(user_params, user: User.find(params[:id]))
 
-    if @form_user.update(form_user_params)
-      redirect_to user_path(@form_user)
+    if @form_user.save
+      redirect_to @form_user
     else
       render :edit, status: :unprocessable_entity
     end
@@ -45,9 +45,9 @@ class UsersController < ApplicationController
   end
 
   private
-    def form_user_params
+    def user_params
       params
-        .require(:form_user)
+        .require(:user)
         .permit(Form::User::USER_ATTR,
           departments: []
         )

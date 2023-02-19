@@ -1,4 +1,4 @@
-<%= form_with model: form_user, url: url do |form| %>
+<%= form_with model: form_user do |form| %>
   <div>
     <%= form.label :last_name %><span style="color: red">*</span>
     <%= form.text_field :last_name %>
@@ -36,11 +36,11 @@
   </div>
   <div>
     <%= form.label :joined_on %>
-    <%= form.date_field :joined_on %>
+    <%= form.date_field :joined_on, value: form_user.joined_on %>
   </div>
   <div>
     <%= form.label :born_on %>
-    <%= form.date_field :born_on %>
+    <%= form.date_field :born_on, value: form_user.born_on %>
   </div>
   <div>
     <%= form.label :prefecture_id %>

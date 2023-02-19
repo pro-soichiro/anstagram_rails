@@ -21,6 +21,9 @@ ja:
         motto_description: 説明
         career: 経歴
         self_introduction: 自己紹介
+        departments: 部署
+        prefecture_id: 都道府県
+        birthplace_detail: 出身地の詳細
       post:
         caption: キャプション
       department:
