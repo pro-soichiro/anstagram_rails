@@ -1,3 +1,14 @@
+<%#
+  このメールテンプレートはメールアドレス変更時に、
+  変更前のアドレスへ変更した旨のメールを送信する場合に利用されます。
+  現在の設定では通知されないようにしているため、
+  もし利用したい場合は
+  config/initializers/devise.rbの下記の設定をtrueにする必要があります。
+
+  # Send a notification to the original email when the user's email is changed.
+  # config.send_email_changed_notification = false
+ %>
+
 <p>Hello <%= @email %>!</p>
 
 <% if @resource.try(:unconfirmed_email?) %>
