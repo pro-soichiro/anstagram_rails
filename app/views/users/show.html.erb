@@ -56,24 +56,12 @@
   <dd><%= @user.self_introduction %></dd>
 </dl>
 
-<ul>
-  <li>
-    <%= link_to "ユーザー 一覧へ", users_path %>
-  </li>
-  <li>
-    <%= link_to "プロフィール編集", edit_user_path(@user) %>
-  </li>
-  <li>
-    <%= link_to "アカウント削除", user_path(@user), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "本当に削除してよろしいですか？"
-    } %>
-  </li>
-</ul>
 
 <h2>投稿</h2>
 <p><%= @posts_size %> 件の投稿があります。</p>
 <%= render @user.posts.order(created_at: :desc) %>
 
-<h2>新規投稿</h2>
-<%= render 'posts/form' %>
+<% if @user == current_user %>
+  <h2>新規投稿</h2>
+  <%= render 'posts/form' %>
+<% end %>

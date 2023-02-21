@@ -6,7 +6,7 @@
       <strong>キャプション:</strong>
       <%= post.caption %>
     </p>
-    <p>by <%= link_to post.user.nickname, post.user %></p>
+    <p>by <%= link_to post.user.full_name, post.user %></p>
     <small>投稿日時: <%= l(post.created_at, format: :long) %></small>
   </div>
 <% end %>

@@ -3,7 +3,7 @@ class Form::User
 
   USER_ATTR = %i(
     last_name first_name last_name_kana first_name_kana
-    email joined_on born_on nickname special_skill pastime
+    joined_on born_on nickname special_skill pastime
     motto motto_description career self_introduction
     birthplace_detail prefecture_id
   )
@@ -18,7 +18,6 @@ class Form::User
     format: { with: /\p{Hiragana}/, message: "はひらがなのみが使えます" }
   validates :first_name_kana, presence: true,
     format: { with: /\p{Hiragana}/, message: "はひらがなのみが使えます" }
-  validates :email, presence: true
   validates :prefecture_id, presence: true, if: -> { birthplace_detail.present? }
 
   delegate :persisted?, to: :user
@@ -42,7 +41,6 @@ class Form::User
         first_name: first_name,
         last_name_kana: last_name_kana,
         first_name_kana: first_name_kana,
-        email: email,
         joined_on: joined_on,
         born_on: born_on,
         nickname: nickname,
@@ -57,9 +55,8 @@ class Form::User
       )
       user.departments = Department.where(id: departments)
       self.id = user.id
-      user
+      true
     end
-
   rescue ActiveRecord::RecordInvalid
     false
   end
@@ -74,7 +71,6 @@ class Form::User
         first_name: user.first_name,
         last_name_kana: user.last_name_kana,
         first_name_kana: user.first_name_kana,
-        email: user.email,
         joined_on: user.joined_on,
         born_on: user.born_on,
         nickname: user.nickname,

@@ -9,20 +9,6 @@ class UsersController < ApplicationController
     @post = @user.posts.build
   end
 
-  def new
-    @form_user = Form::User.new
-  end
-
-  def create
-    @form_user = Form::User.new(user_params)
-
-    if @form_user.save
-      redirect_to @form_user
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
-
   def edit
     @form_user = Form::User.new(user: User.find(params[:id]))
   end

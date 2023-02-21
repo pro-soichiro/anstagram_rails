@@ -8,6 +8,13 @@ class User < ApplicationRecord
   has_and_belongs_to_many :departments
   belongs_to :prefecture, optional: true
 
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :last_name_kana, presence: true,
+    format: { with: /\p{Hiragana}/, message: "はひらがなのみが使えます" }
+  validates :first_name_kana, presence: true,
+    format: { with: /\p{Hiragana}/, message: "はひらがなのみが使えます" }
+
   def full_name
     format("%s %s", last_name, first_name)
   end

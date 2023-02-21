@@ -2,37 +2,22 @@
   <div>
     <%= form.label :last_name %><span style="color: red">*</span>
     <%= form.text_field :last_name %>
-    <% form_user.errors.full_messages_for(:last_name).each do |message| %>
-      <div style="color: red"><%= message %></div>
-    <% end %>
+    <%= render "shared/error_messages", resource: form_user, attribute: :last_name %>
   </div>
   <div>
     <%= form.label :first_name %><span style="color: red">*</span>
     <%= form.text_field :first_name %>
-    <% form_user.errors.full_messages_for(:first_name).each do |message| %>
-      <div style="color: red"><%= message %></div>
-    <% end %>
+    <%= render "shared/error_messages", resource: form_user, attribute: :first_name %>
   </div>
   <div>
     <%= form.label :last_name_kana %><span style="color: red">*</span>
     <%= form.text_field :last_name_kana %>
-    <% form_user.errors.full_messages_for(:last_name_kana).each do |message| %>
-      <div style="color: red"><%= message %></div>
-    <% end %>
+    <%= render "shared/error_messages", resource: form_user, attribute: :last_name_kana %>
   </div>
   <div>
     <%= form.label :first_name_kana %><span style="color: red">*</span>
     <%= form.text_field :first_name_kana %>
-    <% form_user.errors.full_messages_for(:first_name_kana).each do |message| %>
-      <div style="color: red"><%= message %></div>
-    <% end %>
-  </div>
-  <div>
-    <%= form.label :email %><span style="color: red">*</span>
-    <%= form.email_field :email %>
-    <% form_user.errors.full_messages_for(:email).each do |message| %>
-      <div style="color: red"><%= message %></div>
-    <% end %>
+    <%= render "shared/error_messages", resource: form_user, attribute: :first_name_kana %>
   </div>
   <div>
     <%= form.label :joined_on %>
@@ -46,9 +31,7 @@
     <%= form.label :prefecture_id %>
     <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name,
                                                    { include_blank: '未選択'} %>
-    <% form_user.errors.full_messages_for(:prefecture_id).each do |message| %>
-      <div style="color: red"><%= message %></div>
-    <% end %>
+    <%= render "shared/error_messages", resource: form_user, attribute: :prefecture_id %>
   </div>
   <div>
     <%= form.label :birthplace_detail %>

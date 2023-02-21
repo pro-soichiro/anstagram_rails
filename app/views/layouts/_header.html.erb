@@ -9,7 +9,12 @@
       <li><%= link_to "出身地 一覧", birthplaces_path %></li>
       <li><%= link_to "ログアウト", destroy_user_session_path,
                                   data: { turbo_method: :delete } %></li>
-
+      <li><%= link_to "プロフィール", user_path(current_user) %></li>
+      <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
+      <li><%= link_to "アカウント削除", user_path(current_user), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "本当に削除してよろしいですか？"
+        } %></li>
     <% else %>
 
       <li><%= link_to "ログイン", new_session_path(resource_name) %></li>
