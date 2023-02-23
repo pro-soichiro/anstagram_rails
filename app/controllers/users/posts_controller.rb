@@ -1,6 +1,9 @@
 class Users::PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
+    @posts = @user.posts.order(created_at: :desc).page(params[:posts]).per(10)
+    @likes_posts = @user.likes_posts.order(created_at: :desc)
+                        .page(params[:likes_posts]).per(10)
   end
 
   def new

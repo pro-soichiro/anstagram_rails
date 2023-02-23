@@ -2,6 +2,9 @@
 
 <%= link_to '新規投稿', new_user_post_path(current_user), data: { turbo_frame: "modal" } %>
 
-<div id="posts">
-  <%= render partial: "shared/post", collection: @posts %>
-</div>
+<%= turbo_frame_tag "posts_lists" do %>
+  <div id="posts">
+    <%= render partial: "shared/post", collection: @posts %>
+    <%= paginate @posts %>
+  </div>
+<% end %>

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.eager_load(:user).order(created_at: :desc)
+    @posts = Post.eager_load(:user).order(created_at: :desc).page(params[:page])
   end
 
   # TODO: モーダルにする

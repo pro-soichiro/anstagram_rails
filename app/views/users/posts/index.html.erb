@@ -4,10 +4,24 @@
   <h1><%= @user.full_name %>さんの投稿</h1>
 <% end %>
 
-<h2>Posts</h2>
-<p><%= @user.posts.size %> 件の投稿があります。</p>
-<%= render partial: "shared/post", collection: @user.posts.order(created_at: :desc) %>
+<div style="display: flex; justify-content: space-around">
 
-<h2>Likes</h2>
-<p><%= @user.likes.size %> 件</p>
-<%= render partial: "shared/post", collection: @user.likes_posts.order(created_at: :desc) %>
+  <div>
+    <h2>Posts</h2>
+    <%= turbo_frame_tag "posts" do %>
+      <%= page_entries_info @posts, entry_name: '投稿' %>
+      <%= render partial: "shared/post", collection: @posts %>
+      <%= paginate @posts, param_name: :posts %>
+    <% end %>
+  </div>
+
+  <div>
+    <h2>Likes</h2>
+    <%= turbo_frame_tag "likes_posts" do %>
+      <%= page_entries_info @likes_posts, entry_name: 'いいねをした投稿' %>
+      <%= render partial: "shared/post", collection: @likes_posts %>
+      <%= paginate @likes_posts, param_name: :likes_posts %>
+    <% end %>
+  </div>
+
+</div>
