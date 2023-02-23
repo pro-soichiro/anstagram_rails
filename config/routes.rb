@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "/users/sign_up/thanks", to: "users/registrations#thanks"
   end
-  root "users#index"
+  root "posts#index"
 
   resources :users, except: %i(new create) do
     resources :posts

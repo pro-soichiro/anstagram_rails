@@ -1,12 +1,14 @@
-<%= form_with model: [ @user, @post ] do |form| %>
-  <p>
-    <%= form.label :caption %><br>
-    <%= form.text_area :caption %>
-    <% @post.errors.full_messages_for(:caption).each do |message| %>
-      <div style="color: red"><%= message %></div>
-    <% end %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+<%= turbo_frame_tag post do %>
+  <%= form_with model: [ current_user, post ] do |form| %>
+    <p>
+      <%= form.label :caption %><br>
+      <%= form.text_area :caption %>
+      <% post.errors.full_messages_for(:caption).each do |message| %>
+        <div style="color: red"><%= message %></div>
+      <% end %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
 <% end %>

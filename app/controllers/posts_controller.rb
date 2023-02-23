@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.eager_load(:user).order(created_at: :desc)
+    @post = current_user.posts.build
   end
 
   def show
@@ -12,9 +13,10 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @post = @user.posts.build(post_params)
     if @post.save
-      redirect_to user_path(@user)
+      render :create
     else
-      render "users/show", status: :unprocessable_entity
+      @posts = Post.eager_load(:user).order(created_at: :desc)
+      render :index, status: :unprocessable_entity
     end
   end
 

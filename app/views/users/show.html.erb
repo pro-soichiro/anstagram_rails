@@ -57,14 +57,9 @@
 </dl>
 
 <h2>Posts</h2>
-<p><%= @posts_size %> 件の投稿があります。</p>
+<p><%= @user.posts.size %> 件の投稿があります。</p>
 <%= render @user.posts.order(created_at: :desc) %>
 
-<% if @user == current_user %>
-  <h2>Likes</h2>
-  <p><%= @user.likes.size %> 件</p>
-  <%= render @user.likes_posts.order(created_at: :desc) %>
-
-  <h2>新規投稿</h2>
-  <%= render 'posts/form' %>
-<% end %>
+<h2>Likes</h2>
+<p><%= @user.likes.size %> 件</p>
+<%= render @user.likes_posts.order(created_at: :desc) %>

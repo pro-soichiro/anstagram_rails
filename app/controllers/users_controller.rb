@@ -5,8 +5,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts_size = @user.posts.size
-    @post = @user.posts.build
   end
 
   def edit
