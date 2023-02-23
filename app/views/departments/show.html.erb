@@ -1,5 +1,6 @@
 <h1>部署 詳細</h1>
 
+<%# TODO: 部署のリーダーや権限があるユーザーにしか表示させないようにする %>
 <%= link_to "編集", edit_department_path %>
 <%= link_to "削除", department_path(@department), data: {
                 turbo_method: :delete,
@@ -20,12 +21,10 @@
 <h2>所属者</h2><span><%= @department.users.size %>名</span>
 <ul>
   <% @department.users.each do |user| %>
-    <li>
-      <%= link_to user do %>
-        <small><%= user.full_name_kana %></small>
-        <p><%= user.full_name %></p>
-      <% end %>
-    </li>
+
+    <%= render user %>
+
+    <%# TODO: 部署のリーダーや権限があるユーザーにしか表示させないようにする %>
     <%= link_to "削除",
           users_department_path(department_id: @department, user_id: user),
             data: { turbo_method: :delete,

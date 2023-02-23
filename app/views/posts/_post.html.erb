@@ -1,15 +1,25 @@
-<div>
-  <p>
-    <strong>キャプション:</strong>
-    <%= post.caption %>
-  </p>
-  <small>投稿日時: <%= l(post.created_at, format: :long) %></small>
-  <% if post.user == current_user %>
-    <p>
-      <%= link_to "投稿の削除", [post.user, post], data: {
-          turbo_method: :delete,
-          turbo_confirm: "本当に削除してよろしいですか？"
-      } %>
-    </p>
-  <% end %>
-</div>
+  <div style="border: 1px solid black">
+    <%= link_to post %>
+    <p><%= post.caption %></p>
+
+    <small><%= post.likes.size %>Likes
+
+    <% if post.user == current_user %>
+
+        <%= link_to "投稿の削除", [post.user, post], data: {
+            turbo_method: :delete,
+            turbo_confirm: "本当に削除してよろしいですか？"
+        } %>
+      </small>
+
+    <% else %>
+
+        <%= render "likes/toggle", post: post %>
+      </small>
+
+      <small>by <%= link_to post.user.full_name, post.user %></small>
+
+    <% end %>
+    <br>
+    <small>投稿日時: <%= l(post.created_at, format: :long) %></small>
+  </div>

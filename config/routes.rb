@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   resources :users, except: %i(new create) do
     resources :posts
   end
-  resources :posts, only: :index
+  resources :posts, only: %i(index show)
+  resources :likes, only: %i(create destroy)
   resources :departments
   resources :prefectures, only: :index
   resources :birthplaces, only: %i(index show)

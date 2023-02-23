@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_and_belongs_to_many :departments
   belongs_to :prefecture, optional: true
+  has_many :likes, dependent: :destroy
+  has_many :likes_posts, through: :likes, source: :post
 
   validates :last_name, presence: true
   validates :first_name, presence: true

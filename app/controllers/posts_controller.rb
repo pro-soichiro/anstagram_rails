@@ -4,6 +4,10 @@ class PostsController < ApplicationController
     @posts = Post.eager_load(:user).order(created_at: :desc)
   end
 
+  def show
+    @post = Post.eager_load(:likes_users).find(params[:id])
+  end
+
   def create
     @user = User.find(params[:user_id])
     @post = @user.posts.build(post_params)
