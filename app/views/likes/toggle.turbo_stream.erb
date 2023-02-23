@@ -1,0 +1,3 @@
+<%= turbo_stream.update "like_#{@post.id}" do %>
+  <%= render 'likes/toggle', post: Post.find(@post.id) %>
+<% end %>

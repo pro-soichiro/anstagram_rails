@@ -1,7 +1,10 @@
-<%= turbo_frame_tag post do %>
-  <% if current_user.likes_posts.exists?(post.id) %>
-    <%= link_to 'unlike', like_path(post.id), data: { turbo_method: :delete } %>
-  <% else %>
-    <%= link_to 'like', likes_path(id: post.id), data: { turbo_method: :post } %>
+  <small><%= post.likes.size %>Likes</small>
+  <% if post.user != current_user %>
+    <small>
+      <% if current_user.likes_posts.exists?(post.id) %>
+        <%= link_to 'unlike', like_path(post.id), data: { turbo_method: :delete } %>
+      <% else %>
+        <%= link_to 'like', likes_path(id: post.id), data: { turbo_method: :post } %>
+      <% end %>
+    </small>
   <% end %>
-<% end %>

@@ -1,5 +1,5 @@
-<%= turbo_frame_tag post do %>
-  <%= form_with model: [ current_user, post ] do |form| %>
+<%= turbo_frame_tag 'new_post' do %>
+  <%= form_with model:[current_user, post],data: { action: "turbo:submit-end->" } do |form| %>
     <p>
       <%= form.label :caption %><br>
       <%= form.text_area :caption %>

@@ -1,9 +1,0 @@
-<%= turbo_stream.prepend 'posts' do %>
-  <%= render @post %>
-<% end %>
-
-<%= turbo_stream.replace 'new_post' do %>
-  <%= turbo_frame_tag 'new_post' do %>
-    <%= render 'posts/form', post: current_user.posts.build %>
-  <% end %>
-<% end %>

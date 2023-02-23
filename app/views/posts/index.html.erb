@@ -1,8 +1,7 @@
 <h1>タイムライン</h1>
 
-<h2>新規投稿</h2>
-<%= render 'posts/form', post: @post %>
+<%= link_to '新規投稿', new_user_post_path(current_user), data: { turbo_frame: "modal" } %>
 
 <div id="posts">
-  <%= render @posts %>
+  <%= render partial: "shared/post", collection: @posts %>
 </div>

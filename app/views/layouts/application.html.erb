@@ -12,8 +12,10 @@
 
   <body>
     <%= render "layouts/header" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
+    <%= turbo_frame_tag "modal" %>
+    <div id="flashes"></div>
     <%= yield %>
+
   </body>
 </html>

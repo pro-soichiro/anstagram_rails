@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   end
   root "posts#index"
 
-  resources :users, except: %i(new create) do
-    resources :posts
+  resources :users, except: %i(new create destroy) do
+    resources :posts, except: %i(edit update show), controller: "users/posts"
   end
   resources :posts, only: %i(index show)
   resources :likes, only: %i(create destroy)

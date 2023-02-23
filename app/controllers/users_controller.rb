@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def update
     @form_user = Form::User.new(user_params, user: User.find(params[:id]))
 
+    # FIXME: バリデーションに失敗した際に部署のチェックが消える
     if @form_user.save
       redirect_to @form_user
     else

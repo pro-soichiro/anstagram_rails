@@ -1,4 +1,5 @@
 <h1><%= @user.full_name %>のページ</h1>
+<%= link_to "#{@user.full_name}さんの投稿", user_posts_path(@user) %>
 <dl>
   <dt>氏名</dt>
   <dd><%= @user.full_name_kana %></dd>
@@ -55,11 +56,3 @@
   <dt>自己紹介</dt>
   <dd><%= @user.self_introduction %></dd>
 </dl>
-
-<h2>Posts</h2>
-<p><%= @user.posts.size %> 件の投稿があります。</p>
-<%= render @user.posts.order(created_at: :desc) %>
-
-<h2>Likes</h2>
-<p><%= @user.likes.size %> 件</p>
-<%= render @user.likes_posts.order(created_at: :desc) %>

@@ -1,0 +1,13 @@
+<% if @user == current_user %>
+  <%= link_to '新規投稿', new_user_post_path(current_user) %>
+<% else %>
+  <h1><%= @user.full_name %>さんの投稿</h1>
+<% end %>
+
+<h2>Posts</h2>
+<p><%= @user.posts.size %> 件の投稿があります。</p>
+<%= render partial: "shared/post", collection: @user.posts.order(created_at: :desc) %>
+
+<h2>Likes</h2>
+<p><%= @user.likes.size %> 件</p>
+<%= render partial: "shared/post", collection: @user.likes_posts.order(created_at: :desc) %>
