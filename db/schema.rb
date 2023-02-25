@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_22_223201) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_25_002817) do
   create_table "departments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -82,6 +82,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_22_223201) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
+    t.string "provider"
+    t.string "uid"
     t.index ["prefecture_id"], name: "index_users_on_prefecture_id"
   end
 

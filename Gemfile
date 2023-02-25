@@ -49,6 +49,8 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "devise"
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 gem "kaminari"
 
 group :development, :test do

@@ -12,7 +12,12 @@
       <li><%= link_to "投稿", user_posts_path(current_user) %></li>
       <li><%= link_to "プロフィール", user_path(current_user) %></li>
       <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
-      <li><%= link_to "アカウント情報編集", edit_user_registration_path %></li>
+
+      <% if current_user.provider? %>
+        <li><%= link_to "退会", edit_user_registration_path %></li>
+      <% else %>
+        <li><%= link_to "アカウント情報編集", edit_user_registration_path %></li>
+      <% end %>
 
     <% else %>
 

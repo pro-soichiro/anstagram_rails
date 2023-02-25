@@ -20,18 +20,6 @@
     <%= render "shared/error_messages", resource: resource, attribute: :first_name %>
   </div>
 
-  <div>
-    <%= f.label :last_name_kana %><br />
-    <%= f.text_field :last_name_kana %>
-    <%= render "shared/error_messages", resource: resource, attribute: :last_name_kana %>
-  </div>
-
-  <div>
-    <%= f.label :first_name_kana %><br />
-    <%= f.text_field :first_name_kana %>
-    <%= render "shared/error_messages", resource: resource, attribute: :first_name_kana %>
-  </div>
-
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
