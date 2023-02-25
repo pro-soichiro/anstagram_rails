@@ -1,12 +1,16 @@
 <h1>部署 詳細</h1>
 
-<%# TODO: 部署のリーダーや権限があるユーザーにしか表示させないようにする %>
-<%= link_to "編集", edit_department_path %>
-<%= link_to "削除", department_path(@department), data: {
-  turbo_method: :delete,
-  turbo_confirm: "#{@department.name}を削除してよろしいですか？\nこの部署に所属する人の部署情報からも削除されます。"
-} %>
-<%= link_to "メンバーの追加", edit_users_department_path(department_id: @department) %>
+<% if current_user.admin? %>
+
+  <%= link_to "編集", edit_department_path %>
+  <%= link_to "削除", department_path(@department), data: {
+    turbo_method: :delete,
+    turbo_confirm: "#{@department.name}を削除してよろしいですか？\nこの部署に所属する人の部署情報からも削除されます。"
+  } %>
+  <%= link_to "メンバーの追加", edit_users_department_path(department_id: @department) %>
+
+<% end %>
+
 <div style="border: 1px solid black">
   <p>
     <strong>部署名:</strong>
@@ -24,10 +28,12 @@
 
     <%= render user %>
 
-    <%# TODO: 部署のリーダーや権限があるユーザーにしか表示させないようにする %>
-    <%= link_to "削除",
-          users_department_path(department_id: @department, user_id: user),
-            data: { turbo_method: :delete,
-                    turbo_confirm: "#{user.full_name}さんを、#{@department.name}から削除してよろしいですか？"} %>
+    <% if current_user.admin? %>
+      <%= link_to "削除",
+            users_department_path(department_id: @department, user_id: user),
+              data: { turbo_method: :delete,
+                      turbo_confirm: "#{user.full_name}さんを、#{@department.name}から削除してよろしいですか？"} %>
+    <% end %>
+
   <% end %>
 </ul>

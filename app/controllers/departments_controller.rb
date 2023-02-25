@@ -1,4 +1,5 @@
 class DepartmentsController < ApplicationController
+  before_action :auth_admin, except: %i(index show)
 
   def index
     @departments = Department.all

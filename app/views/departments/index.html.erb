@@ -1,4 +1,7 @@
 <h1>部署一覧</h1>
-<%= link_to "新規作成", new_department_path %>
+
+<% if current_user.admin? %>
+  <%= link_to "新規作成", new_department_path %>
+<% end %>
 
 <%= render @departments %>

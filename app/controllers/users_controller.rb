@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :auth_admin, only: :destroy
+
   def index
     @users = User.all.page(params[:page])
   end
@@ -22,12 +24,11 @@ class UsersController < ApplicationController
     end
   end
 
-  # FIXME: 管理者権限を持つ人が退職者を削除する
   def destroy
     @user = User.find(params[:id])
     @user.destroy
 
-    redirect_to root_path, status: :see_other
+    redirect_to users_path, status: :see_other
   end
 
   private

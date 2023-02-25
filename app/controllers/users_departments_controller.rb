@@ -1,4 +1,6 @@
 class UsersDepartmentsController < ApplicationController
+  before_action :auth_admin
+
   def edit
     @department = Department.find(params[:department_id])
   end

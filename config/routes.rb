@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-    root to: 'users#show', as: :authenticated_root
+    root to: 'users#show', as: :user_root
   end
   root to: redirect('/users/sign_in')
 
-  resources :users, except: %i(new create destroy) do
+  resources :users, except: %i(new create) do
     resources :posts, except: %i(edit update show), controller: "users/posts"
   end
   resources :posts, only: %i(index show)

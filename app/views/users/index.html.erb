@@ -3,7 +3,18 @@
 <ul>
   <%= turbo_frame_tag "users" do %>
     <%= page_entries_info @users, entry_name: 'ユーザー' %>
-    <%= render @users %>
+
+    <% @users.each do |user| %>
+      <%= render layout: "users/user", locals: { user: user } do %>
+        <% if current_user.admin? && current_user != user %>
+          <%= button_to "退会させる", user_path(user), data: {
+                                    confirm: "#{user.full_name}を退会させてよろしいですか？",
+                                    turbo_confirm: "#{user.full_name}を退会させてよろしいですか？"
+                                  }, method: :delete %>
+        <% end %>
+      <% end %>
+    <% end %>
+
     <%= paginate @users %>
   <% end %>
 </ul>
