@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = params[:id] ? User.find(params[:id]) : current_user
   end
 
   def edit
@@ -37,17 +37,4 @@ class UsersController < ApplicationController
           departments: []
         )
     end
-
-    # TODO: birthplaceは複数持てないようにしたが、配列としてパラメータに渡せるので、
-    #       permit(:last_name, birthplaces: [ :prefecture, :detail ] )
-    #       として、受け取れる
-    #       Parameters: {
-    #                     :form_user => {
-    #                       "last_name"=>"something",
-    #                       "birthplaces"=> [
-    #                         "prefecture"=>"1",
-    #                         "detail"=>"something"
-    #                       ]
-    #                     }
-    #                   }
 end

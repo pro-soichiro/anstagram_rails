@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "/users/sign_up/thanks", to: "users/registrations#thanks"
   end
-  root "posts#index"
+  root "users#show"
 
   resources :users, except: %i(new create destroy) do
     resources :posts, except: %i(edit update show), controller: "users/posts"
