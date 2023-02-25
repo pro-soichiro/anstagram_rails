@@ -33,6 +33,7 @@ class Form::User
   end
 
   def save
+    departments.map!(&:to_i)
     return if invalid?
 
     ActiveRecord::Base.transaction do
