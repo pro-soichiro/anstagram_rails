@@ -15,7 +15,7 @@ class DepartmentsController < ApplicationController
   def create
     @department = Department.new(department_params)
     if @department.save
-      redirect_to @department
+      redirect_to @department, notice: "新しい部署を作成しました！"
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class DepartmentsController < ApplicationController
   def update
     @department = Department.find(params[:id])
     if @department.update(department_params)
-      redirect_to @department
+      redirect_to @department, notice: "部署の情報を更新しました！"
     else
       render :new, status: :unprocessable_entity
     end
@@ -38,7 +38,7 @@ class DepartmentsController < ApplicationController
     @department = Department.find(params[:id])
     @department.destroy
 
-    redirect_to departments_path, status: :see_other
+    redirect_to departments_path, status: :see_other, notice: "部署を削除しました。"
   end
 
   private

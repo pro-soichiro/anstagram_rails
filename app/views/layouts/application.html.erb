@@ -14,7 +14,9 @@
     <%= render "layouts/header" %>
 
     <%= turbo_frame_tag "modal" %>
-    <div id="flashes"></div>
+    <div id="flashes">
+      <%= turbo_stream_flash %>
+    </div>
     <%= yield %>
 
   </body>

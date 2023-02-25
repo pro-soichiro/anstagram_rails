@@ -16,12 +16,13 @@ class UsersController < ApplicationController
 
     # FIXME: バリデーションに失敗した際に部署のチェックが消える
     if @form_user.save
-      redirect_to @form_user
+      redirect_to @form_user, notice: 'プロフィールを更新しました！'
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
+  # FIXME: 管理者権限を持つ人が退職者を削除する
   def destroy
     @user = User.find(params[:id])
     @user.destroy
