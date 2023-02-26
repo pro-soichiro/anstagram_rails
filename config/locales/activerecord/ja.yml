@@ -24,7 +24,9 @@ ja:
         departments: 部署
         prefecture_id: 都道府県
         birthplace_detail: 出身地の詳細
+        avatar: プロフィール画像
       post:
+        image: 画像
         caption: キャプション
       department:
         name: 部署名

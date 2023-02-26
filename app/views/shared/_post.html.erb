@@ -1,8 +1,11 @@
 <%= turbo_frame_tag post do %>
   <div style="border: 1px solid black">
-    <%= link_to 'detail', post %>
-
-    <p><%= post.caption %></p>
+    <%= link_to post do %>
+      <% if post.image.attached? %>
+        <%= image_tag post.image.variant(:thumb) %>
+      <% end %>
+      <p><%= post.caption %></p>
+    <% end %>
 
     <%= turbo_frame_tag "like_#{post.id}" do %>
       <%= render "likes/toggle", post: post %>

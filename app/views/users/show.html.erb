@@ -1,6 +1,20 @@
 <h1><%= @user.full_name %>のページ</h1>
 <%= link_to "#{@user.full_name}さんの投稿", user_posts_path(@user) %>
 <dl>
+  <dt>プロフィール画像</dt>
+  <dd>
+    <div style="position: relative; overflow: hidden; width: 90px; height: 90px; border-radius: 50%;">
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar.variant(:thumb),
+          style: "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 100%" %>
+      <% else %>
+        <%= image_tag "user.png",
+          style: "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 100%" %>
+      <% end %>
+    </div>
+  </dd>
+</dl>
+<dl>
   <dt>氏名</dt>
   <dd><%= @user.full_name_kana %></dd>
   <dd><%= @user.full_name %></dd>

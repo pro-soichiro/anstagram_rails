@@ -1,4 +1,5 @@
 FROM ruby:3.1
+RUN apt-get update -qq && apt-get install -y --no-install-recommends libvips42
 
 RUN mkdir /anstagram
 WORKDIR /anstagram
@@ -20,4 +21,3 @@ EXPOSE 3000
 
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]
-

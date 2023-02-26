@@ -9,6 +9,9 @@ class User < ApplicationRecord
   belongs_to :prefecture, optional: true
   has_many :likes, dependent: :destroy
   has_many :likes_posts, through: :likes, source: :post
+  has_one_attached :avatar do |attachable|
+    attachable.variant :thumb, resize_to_limit: [100, 100]
+  end
 
   validates :last_name, presence: true
   validates :first_name, presence: true

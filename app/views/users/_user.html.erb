@@ -1,8 +1,25 @@
 <li>
   <%= link_to user do %>
-    <small><%= user.full_name_kana %></small>
-    <p style="margin: 0"><%= user.full_name %></p>
+    <div style="display: flex">
+
+      <div style="position: relative; overflow: hidden; width: 40px; height: 40px; border-radius: 50%;">
+        <% if user.avatar.attached? %>
+          <%= image_tag user.avatar.variant(:thumb),
+            style: "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 100%" %>
+        <% else %>
+          <%= image_tag "user.png",
+            style: "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 100%" %>
+        <% end %>
+      </div>
+
+      <div style="margin-left: 10px">
+        <small><%= user.full_name_kana %></small>
+        <p style="margin: 0"><%= user.full_name %></p>
+      </div>
+
+    </div>
   <% end %>
+
   <% if block_given? %>
     <%= yield user %>
   <% end %>
