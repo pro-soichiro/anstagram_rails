@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :users, except: %i(new create) do
     resources :posts, except: %i(edit update show), controller: "users/posts"
+    resource :profile, only: %i(edit update), controller: "users/profile"
   end
   resources :posts, only: %i(index show)
   resources :likes, only: %i(create destroy)

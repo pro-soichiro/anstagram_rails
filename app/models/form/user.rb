@@ -5,7 +5,7 @@ class Form::User
     last_name first_name last_name_kana first_name_kana
     joined_on born_on nickname special_skill pastime
     motto motto_description career self_introduction
-    birthplace_detail prefecture_id avatar
+    birthplace_detail prefecture_id
   )
 
   attr_accessor :id
@@ -54,7 +54,6 @@ class Form::User
         prefecture_id: prefecture_id,
         birthplace_detail: birthplace_detail,
       )
-      user.avatar.attach(avatar) if avatar
       user.departments = Department.where(id: departments)
       self.id = user.id
       true
@@ -85,7 +84,6 @@ class Form::User
         prefecture_id: user.prefecture_id,
         birthplace_detail: user.birthplace_detail,
         departments: user.department_ids,
-        avatar: user.avatar
       }
     end
 end

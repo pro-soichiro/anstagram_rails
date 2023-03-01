@@ -1,5 +1,5 @@
 <%= turbo_frame_tag post do %>
-  <div style="border: 1px solid black">
+  <div style="border: 1px solid black; text-align: center">
     <%= link_to post do %>
       <% if post.image.attached? %>
         <%= image_tag post.image.variant(:thumb) %>
@@ -14,7 +14,7 @@
     <br>
     <small>投稿日時: <%= l(post.created_at, format: :long) %></small>
 
-    <% if post.user == current_user %>
+    <% if are_you_the_parson?(post.user) %>
       <small>
         <%= link_to "投稿の削除", [post.user, post], data: {
             turbo_method: :delete,

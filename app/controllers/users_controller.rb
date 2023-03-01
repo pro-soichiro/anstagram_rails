@@ -9,17 +9,14 @@ class UsersController < ApplicationController
     @user = params[:id] ? User.find(params[:id]) : current_user
   end
 
-  def edit
-    @form_user = Form::User.new(user: User.find(params[:id]))
-  end
-
   def update
-    @form_user = Form::User.new(user_params, user: User.find(params[:id]))
+    @user = current_user
 
-    if @form_user.save
-      redirect_to @form_user, notice: 'プロフィールを更新しました！'
+    if @user.update(user_params)
+      redirect_to @user, notice: 'プロフィール画像を更新しました！'
     else
-      render :edit, status: :unprocessable_entity
+      @user.avatar = nil
+      render :show, status: :unprocessable_entity
     end
   end
 
@@ -32,10 +29,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params
-        .require(:user)
-        .permit(Form::User::USER_ATTR,
-          departments: []
-        )
+      params.require(:user).permit(:avatar)
     end
 end

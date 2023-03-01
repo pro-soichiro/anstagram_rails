@@ -1,4 +1,4 @@
-<% if @user == current_user %>
+<% if are_you_the_parson?(@user) %>
   <%= link_to '新規投稿', new_user_post_path(current_user) %>
 <% else %>
   <h1><%= @user.full_name %>さんの投稿</h1>

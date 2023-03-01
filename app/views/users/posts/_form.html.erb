@@ -1,18 +1,21 @@
 <%= turbo_frame_tag 'new_post' do %>
   <%= form_with model:[current_user, post],data: { action: "turbo:submit-end->" } do |form| %>
-    <p>
 
-      <%= form.label :image %><span style="color: red">*</span>
+    <div>
+      <%= form.label :image %><span style="color: red">*</span><br>
       <%= form.file_field :image %>
       <%= render "shared/error_messages", resource: post, attribute: :image %>
+    </div>
 
-      <%= form.label :caption %><br>
+    <div>
+      <%= form.label :caption %><span style="color: red">*</span><br>
       <%= form.text_area :caption %>
       <%= render "shared/error_messages", resource: post, attribute: :caption%>
+    </div>
 
-    </p>
-    <p>
+    <div>
       <%= form.submit %>
-    </p>
+    </div>
+
   <% end %>
 <% end %>

@@ -14,6 +14,35 @@
     </div>
   </dd>
 </dl>
+
+<%# TODO: modalにする %>
+<div style="border: 1px solid black">
+
+  <p>modal</p>
+
+  <div>
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar.variant(:preview) %>
+    <% else %>
+      <%= image_tag "user.png",
+        style: "max-height: 300px; max-width: 300px" %>
+    <% end %>
+  </div>
+
+  <% if are_you_the_parson?(@user) %>
+    <%= form_with model: @user do |form| %>
+      <div>
+        <%= form.file_field :avatar %>
+        <%= render "shared/error_messages", resource: @user, attribute: :avatar %>
+      </div>
+      <div>
+        <%= form.submit %>
+      </div>
+    <% end %>
+  <% end %>
+
+</div>
+
 <dl>
   <dt>氏名</dt>
   <dd><%= @user.full_name_kana %></dd>
