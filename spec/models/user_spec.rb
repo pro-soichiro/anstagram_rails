@@ -42,7 +42,6 @@ RSpec.describe User, type: :model do
       email: 'soichiro@gmail.com',
       password: 'password1234'
     )
-    user.skip_confirmation!
     user.valid?
     expect(user.errors[:email]).to include("はすでに存在します")
   end
@@ -55,4 +54,11 @@ RSpec.describe User, type: :model do
     expect(user.full_name).to eq('間宮 漱一朗')
   end
 
+  it "ユーザーのフルネームのかなを文字列として返すこと" do
+    user = User.new(
+      last_name_kana: 'まみや',
+      first_name_kana: 'そういちろう'
+    )
+    expect(user.full_name_kana).to eq('まみや そういちろう')
+  end
 end
