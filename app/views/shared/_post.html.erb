@@ -1,6 +1,6 @@
 <%= turbo_frame_tag post do %>
   <div style="border: 1px solid black; text-align: center">
-    <%= link_to post do %>
+    <%= link_to post, target: "_top" do %>
       <% if post.image.attached? %>
         <%= image_tag post.image.variant(:thumb) %>
       <% end %>
