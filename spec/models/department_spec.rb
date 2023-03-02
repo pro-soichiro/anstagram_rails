@@ -10,17 +10,13 @@ RSpec.describe Department, type: :model do
   end
 
   it "部署名がなければ無効な状態であること" do
-    department = Department.new(
-      name: nil
-    )
+    department = Department.new(name: nil)
     department.valid?
     expect(department.errors[:name]).to include("は必須項目です")
   end
 
   it "部署の説明がなければ無効な状態であること" do
-    department = Department.new(
-      description: nil
-    )
+    department = Department.new(description: nil)
     department.valid?
     expect(department.errors[:description]).to include("は必須項目です")
   end
