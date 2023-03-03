@@ -54,4 +54,14 @@ RSpec.describe User, type: :model do
     user.valid?
     expect(user.errors[:avatar]).to include("のContent Typeが不正です。PNG, JPEG, JPEGに対応しています。")
   end
+
+  it "複数の投稿を持っていること" do
+    user = FactoryBot.create(:user, :with_posts)
+    expect(user.posts.length).to eq 3
+  end
+
+  it "複数のいいねした投稿を持っていること" do
+    user = FactoryBot.create(:user, :with_likes_posts)
+    expect(user.likes_posts.length).to eq 3
+  end
 end
