@@ -27,7 +27,7 @@ RSpec.describe UsersDepartmentsController, type: :controller do
         @department = FactoryBot.create(:department)
       end
 
-      it "return a 403 response" do
+      it "returns a 403 response" do
         sign_in @user
         get :edit, params: { id: @department.id }
         expect(response).to have_http_status "403"
@@ -43,7 +43,7 @@ RSpec.describe UsersDepartmentsController, type: :controller do
     end
 
     context "as an authorized user" do
-      it "return a 302 response" do
+      it "returns a 302 response" do
         sign_in @admin_user
         patch :update, params: { id: @department.id, department:
                                 { user_ids: [@other_user.id]} }
@@ -65,7 +65,7 @@ RSpec.describe UsersDepartmentsController, type: :controller do
         @department = FactoryBot.create(:department)
       end
 
-      it "return a 403 response" do
+      it "returns a 403 response" do
         sign_in @user
         patch :update, params: { id: @department.id, department:
                                 { user_ids: [@other_user.id]} }
@@ -83,7 +83,7 @@ RSpec.describe UsersDepartmentsController, type: :controller do
     end
 
     context "as an authorized user" do
-      it "return a 303 response" do
+      it "returns a 303 response" do
         sign_in @admin_user
         delete :destroy, params: { id: @department.id, user_id: @other_user.id }
         expect(response).to have_http_status "303"
@@ -104,7 +104,7 @@ RSpec.describe UsersDepartmentsController, type: :controller do
         @department.users << @other_user
       end
 
-      it "return a 403 response" do
+      it "returns a 403 response" do
         sign_in @user
         delete :destroy, params: { id: @department.id, user_id: @other_user.id }
         expect(response).to have_http_status "403"

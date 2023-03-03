@@ -57,7 +57,7 @@ RSpec.describe UsersController, type: :controller do
         @user = FactoryBot.create(:user, :confirmed)
       end
 
-      it "return a 302 response" do
+      it "returns a 302 response" do
         get :show, params: { id: @user.id }
         expect(response).to have_http_status "302"
       end
@@ -103,7 +103,7 @@ RSpec.describe UsersController, type: :controller do
         @user = FactoryBot.create(:user, :confirmed)
       end
 
-      it "return a 302 response" do
+      it "returns a 302 response" do
         user_params = FactoryBot.attributes_for(:user,
           avatar: Rack::Test::UploadedFile.new(
             "#{Rails.root}/spec/files/attachment.jpg", 'image/jpeg'
@@ -132,7 +132,7 @@ RSpec.describe UsersController, type: :controller do
         @admin_user = FactoryBot.create(:user, :admin)
       end
 
-      it "return a 303 response" do
+      it "returns a 303 response" do
         sign_in @admin_user
         delete :destroy, params: { id: @other_user.id }
         expect(response).to have_http_status "303"
@@ -145,7 +145,7 @@ RSpec.describe UsersController, type: :controller do
         @user = FactoryBot.create(:user, :confirmed)
       end
 
-      it "return a 403 response" do
+      it "returns a 403 response" do
         sign_in @user
         delete :destroy, params: { id: @other_user.id }
         expect(response).to have_http_status "403"
