@@ -7,7 +7,7 @@
     turbo_method: :delete,
     turbo_confirm: "#{@department.name}を削除してよろしいですか？\nこの部署に所属する人の部署情報からも削除されます。"
   } %>
-  <%= link_to "メンバーの追加", edit_users_department_path(department_id: @department) %>
+  <%= link_to "メンバーの追加", edit_users_department_path(@department) %>
 
 <% end %>
 
@@ -30,7 +30,7 @@
 
     <% if current_user.admin? %>
       <%= link_to "削除",
-            users_department_path(department_id: @department, user_id: user),
+            users_department_path(id: @department, user_id: user),
               data: { turbo_method: :delete,
                       turbo_confirm: "#{user.full_name}さんを、#{@department.name}から削除してよろしいですか？"} %>
     <% end %>
