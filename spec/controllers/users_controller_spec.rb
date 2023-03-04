@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   describe "#index" do
-    before do
-      @user = FactoryBot.create(:user, :confirmed)
-    end
-
     context "as an authenticated user" do
+      before do
+        @user = FactoryBot.create(:user, :confirmed)
+      end
+
       it "responds successfully" do
         sign_in @user
         get :index
