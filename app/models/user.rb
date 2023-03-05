@@ -2,7 +2,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable,
-         :omniauthable, omniauth_providers: %i(google_oauth2)
+         :omniauthable, omniauth_providers: %i[google_oauth2]
 
   has_many :posts, dependent: :destroy
   has_and_belongs_to_many :departments
@@ -16,14 +16,14 @@ class User < ApplicationRecord
 
   validates :last_name, presence: true
   validates :first_name, presence: true
-  validates :avatar, content_type: %i(png jpg jpeg)
+  validates :avatar, content_type: %i[png jpg jpeg]
 
   def full_name
-    format("%s %s", last_name, first_name)
+    format('%s %s', last_name, first_name)
   end
 
   def full_name_kana
-    format("%s %s", last_name_kana, first_name_kana)
+    format('%s %s', last_name_kana, first_name_kana)
   end
 
   def self.from_omniauth(auth)

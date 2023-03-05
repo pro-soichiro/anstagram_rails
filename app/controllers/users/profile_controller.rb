@@ -1,5 +1,4 @@
 class Users::ProfileController < ApplicationController
-
   def edit
     @form_user = Form::User.new(user: User.find(params[:user_id]))
   end
@@ -15,11 +14,11 @@ class Users::ProfileController < ApplicationController
   end
 
   private
-    def user_profile_params
-      params
-        .require(:user)
-        .permit(Form::User::USER_ATTR,
-          departments: []
-        )
-    end
+
+  def user_profile_params
+    params
+      .require(:user)
+      .permit(Form::User::USER_ATTR,
+              departments: [])
+  end
 end

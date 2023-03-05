@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
 
   private
 
-    def auth_admin
-      unless current_user.admin?
-        render 'errors/forbidden', status: :forbidden
-      end
-    end
+  def auth_admin
+    return if current_user.admin?
+
+    render 'errors/forbidden', status: :forbidden
+  end
 end

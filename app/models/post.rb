@@ -7,5 +7,5 @@ class Post < ApplicationRecord
   end
 
   validates :caption, presence: true
-  validates :image, attached: true, content_type: %i(png jpg jpeg)
+  validates :image, attached: true, content_type: %i[png jpg jpeg]
 end
