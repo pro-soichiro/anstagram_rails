@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeColumnToNull < ActiveRecord::Migration[7.0]
   def up
     change_column_null :users, :prefecture_id, true

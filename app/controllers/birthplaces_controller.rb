@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BirthplacesController < ApplicationController
   def index
     @birthplaces = User.joins('INNER JOIN prefectures p ON prefecture_id = p.id')

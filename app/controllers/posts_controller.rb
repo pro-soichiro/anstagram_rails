@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   def index
     @posts = Post.eager_load(:user).order(created_at: :desc).page(params[:page])

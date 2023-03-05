@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :form_user, class: Form::User do
     last_name { '間宮' }

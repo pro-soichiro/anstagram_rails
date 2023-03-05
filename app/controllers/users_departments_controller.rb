@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersDepartmentsController < ApplicationController
   before_action :auth_admin
 
