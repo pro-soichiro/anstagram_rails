@@ -9,11 +9,11 @@ FactoryBot.define do
   end
 
   trait :confirmed do
-    confirmed_at { Time.now }
+    confirmed_at { Time.zone.now }
   end
 
   trait :admin do
-    confirmed_at { Time.now }
+    confirmed_at { Time.zone.now }
     admin { true }
   end
 

@@ -15,6 +15,10 @@ class DepartmentsController < ApplicationController
     @department = Department.new
   end
 
+  def edit
+    @department = Department.find(params[:id])
+  end
+
   def create
     @department = Department.new(department_params)
     if @department.save
@@ -22,10 +26,6 @@ class DepartmentsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def edit
-    @department = Department.find(params[:id])
   end
 
   def update
