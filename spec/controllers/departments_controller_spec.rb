@@ -199,10 +199,10 @@ RSpec.describe DepartmentsController, type: :controller do
         @department = FactoryBot.create(:department)
       end
 
-      it "returns a 302 response" do
+      it "returns a 303 response" do
         sign_in @admin_user
         delete :destroy, params: { id: @department.id }
-        expect(response).to have_http_status "302"
+        expect(response).to have_http_status "303"
       end
     end
 
