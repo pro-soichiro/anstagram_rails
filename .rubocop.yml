@@ -23,5 +23,8 @@ Rails/I18nLocaleTexts:
 Rails/LexicallyScopedActionFilter:
   Enabled: false
 
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
 Metrics:
   Enabled: false
