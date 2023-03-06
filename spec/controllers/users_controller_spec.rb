@@ -80,7 +80,7 @@ RSpec.describe UsersController, type: :controller do
       it 'responds successfully' do
         user_params = FactoryBot.attributes_for(:user,
                                                 avatar: Rack::Test::UploadedFile.new(
-                                                  "#{Rails.root}/spec/files/attachment.jpg", 'image/jpeg'
+                                                  Rails.root.join('spec/files/attachment.jpg'), 'image/jpeg'
                                                 ))
         sign_in @user
         patch :update, params: { id: @user.id, user: user_params }
@@ -90,7 +90,7 @@ RSpec.describe UsersController, type: :controller do
       it 'returns a 200 response' do
         user_params = FactoryBot.attributes_for(:user,
                                                 avatar: Rack::Test::UploadedFile.new(
-                                                  "#{Rails.root}/spec/files/attachment.jpg", 'image/jpeg'
+                                                  Rails.root.join('spec/files/attachment.jpg'), 'image/jpeg'
                                                 ))
         sign_in @user
         patch :update, params: { id: @user.id, user: user_params }
@@ -106,7 +106,7 @@ RSpec.describe UsersController, type: :controller do
       it 'returns a 302 response' do
         user_params = FactoryBot.attributes_for(:user,
                                                 avatar: Rack::Test::UploadedFile.new(
-                                                  "#{Rails.root}/spec/files/attachment.jpg", 'image/jpeg'
+                                                  Rails.root.join('spec/files/attachment.jpg'), 'image/jpeg'
                                                 ))
         patch :update, params: { id: @user.id, user: user_params }
         expect(response).to have_http_status '302'
@@ -115,7 +115,7 @@ RSpec.describe UsersController, type: :controller do
       it 'redirects to the sign-in page' do
         user_params = FactoryBot.attributes_for(:user,
                                                 avatar: Rack::Test::UploadedFile.new(
-                                                  "#{Rails.root}/spec/files/attachment.jpg", 'image/jpeg'
+                                                  Rails.root.join('spec/files/attachment.jpg'), 'image/jpeg'
                                                 ))
         patch :update, params: { id: @user.id, user: user_params }
         expect(response).to redirect_to '/users/sign_in'

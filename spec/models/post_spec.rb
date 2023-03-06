@@ -27,7 +27,7 @@ RSpec.describe Post, type: :model do
   it '画像の拡張子がpng,jpg,jpeg以外であると無効な状態であること' do
     post = FactoryBot.build(:post,
                             image: Rack::Test::UploadedFile.new( \
-                              "#{Rails.root}/spec/files/attachment.pdf", 'application/pdf'
+                              Rails.root.join('spec/files/attachment.pdf'), 'application/pdf'
                             ))
     post.valid?
     expect(post.errors[:image]).to \

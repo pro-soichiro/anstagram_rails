@@ -27,7 +27,7 @@ module Form
       user
     end
 
-    def initialize(attributes = nil, user: User.new)
+    def initialize(attributes, user: User.new)
       @user = user
       attributes ||= default_attributes
       super(attributes)

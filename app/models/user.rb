@@ -21,11 +21,11 @@ class User < ApplicationRecord
   validates :avatar, content_type: %i[png jpg jpeg]
 
   def full_name
-    format('%s %s', last_name, first_name)
+    [last_name, first_name].join(' ')
   end
 
   def full_name_kana
-    format('%s %s', last_name_kana, first_name_kana)
+    [last_name_kana, first_name_kana].join(' ')
   end
 
   def self.from_omniauth(auth)

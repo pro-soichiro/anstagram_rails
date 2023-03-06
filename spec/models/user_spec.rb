@@ -50,7 +50,7 @@ RSpec.describe User, type: :model do
 
   it '画像の拡張子がpng,jpg,jpeg以外であると無効な状態であること' do
     user = User.new(
-      avatar: Rack::Test::UploadedFile.new("#{Rails.root}/spec/files/attachment.pdf", 'application/pdf')
+      avatar: Rack::Test::UploadedFile.new(Rails.root.join('spec/files/attachment.pdf'), 'application/pdf')
     )
     user.valid?
     expect(user.errors[:avatar]).to include('のContent Typeが不正です。PNG, JPEG, JPEGに対応しています。')

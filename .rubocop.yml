@@ -12,5 +12,16 @@ AllCops:
     - "log/**/*"
     - "tmp/**/*"
     - "vendor/**/*"
-    - "config/environments/*"
-    - "config/puma.rb"
+    - "config/**/*"
+
+Style/Documentation:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
+
+Metrics:
+  Enabled: false

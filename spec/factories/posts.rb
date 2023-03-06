@@ -5,7 +5,7 @@ FactoryBot.define do
     sequence(:caption) { |n| "キャプション#{n}" }
     image do
       Rack::Test::UploadedFile.new( \
-        "#{Rails.root}/spec/files/attachment.jpg", 'image/jpeg'
+        Rails.root.join('spec/files/attachment.jpg'), 'image/jpeg'
       )
     end
     association :user
