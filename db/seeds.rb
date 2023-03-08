@@ -9,6 +9,6 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 Prefecture.destroy_all
-JSON.parse(File.new("#{Rails.root}/db/seed_jsons/prefectures.json")).each do |p|
+JSON.load(File.new("#{Rails.root}/db/seed_jsons/prefectures.json")).each do |p|
   Prefecture.create p
 end
