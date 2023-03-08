@@ -21,6 +21,20 @@ Things you may want to cover:
 
 * Deployment instructions
 
+# 初期環境構築方法
+1. git clone
+2. .envの作成と必要事項の記述
+3. docker-compose build
+4. docker-compose run --rm web bin/rails db:setup
+5. docker-compose up
+
+setupコマンドは「データベースの作成」「スキーマの読み込み」「seedデータを用いたデータベースの初期化」をまとめて実行します。
+
+アプリケーションのデータベースの新しいインスタンスを作成する場合、マイグレーションの全履歴を最初から繰り返すよりも、
+単にrails db:schema:loadでスキーマファイルを読み込む方が、高速かつエラーが起きにくい傾向があります。
+
+詳細は[Railsガイド](https://railsguides.jp/active_record_migrations.html#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B)を参照してください。
+
 
 # アノテーションの活用
 
